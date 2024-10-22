@@ -71,7 +71,7 @@ Pour éviter les requêtes trop nombreuses vous pourrez afficher tous les monume
 - Pensez à compléter le ***nom de la personne corrigée*** et le ***nom du correcteur*** dans l'entête du tableau.
 - Indiquez le **nombre d'étoiles obtenues** (l'étoile d'une catégorie est obtenue si tous ses critères de performance sont validés).
 
-| *nom de la personne corrigée*          |                               | *nom du correcteur*       |
+| *Maxence*          |                               | *nom du correcteur*       |
 | :---- | :----: | :---: |
 | Critères de performance                |                               | Remarques du correcteur   |
 | ***Interface utilisateur***            |                               |                           |

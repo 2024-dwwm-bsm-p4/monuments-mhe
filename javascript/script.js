@@ -26,15 +26,54 @@ const monuments = {
     }
 };
 
-// Initialiser la carte Leaflet centrée sur la France
-const map = L.map('map').setView([46.603354, 1.888334], 6); // Centre de la France
+const images = document.querySelectorAll('.img-fluid');
 
-// Charger les tuiles de carte OpenStreetMap
+// Fonction pour mettre l'image en couleur et les autres en noir et blanc
+function setActiveImage(clickedImage) {
+    images.forEach(image => {
+        if (image === clickedImage) {
+            image.style.filter = "grayscale(0%)"; 
+            image.style.transform = "scale(1.1)"; 
+        } else {
+            image.style.filter = "grayscale(100%)"; 
+            image.style.transform = "scale(1)";   
+        }
+    });
+}
+
+// Ajouter l'événement de clic sur chaque image
+images.forEach(image => {
+    image.addEventListener('click', () => setActiveImage(image));
+});
+
+document.querySelectorAll('.monument-btn, .img-fluid').forEach(button => {
+    button.addEventListener('click', () => {
+        const monumentInfo = document.getElementById('monument-info');
+        const map = document.getElementById('map');
+
+        monumentInfo.classList.remove('slide-in');
+        monumentInfo.classList.add('slide-out');
+        map.classList.remove('slide-in');
+        map.classList.add('slide-out');
+
+        setTimeout(() => {
+            monumentInfo.classList.remove('slide-out');
+            monumentInfo.classList.add('slide-in');
+            map.classList.remove('slide-out');
+            map.classList.add('slide-in');
+        }, 500);
+    });
+});
+
+
+// Centre de la France
+const map = L.map('map').setView([46.603354, 1.888334], 6);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-// Fonction pour afficher les informations du monument et marquer son emplacement
+// affiche la description d'un monument
 function showMonumentInfo(monument) {
     const info = monuments[monument];
     document.getElementById('monument-name').innerText = monument;
@@ -43,7 +82,7 @@ function showMonumentInfo(monument) {
         ${info.description}
     `;
 
-    // Centrer la carte et ajouter un marqueur
+    // Centrer la carte et ajouter un marqueur à la ville
     map.setView(info.coords, 10);
     L.marker(info.coords).addTo(map)
         .bindPopup(`<strong>${monument}</strong><br>${info.ville}, France`)

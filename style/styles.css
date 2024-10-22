@@ -6,37 +6,45 @@ body {
 
 .container {
     max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .row.gx-0 {
-    gap: 0; /* Supprimer l'espace entre les colonnes */
-    margin: 0; /* Supprimer toute marge supplémentaire */
+    gap: 0;
+    margin: 0;
 }
 
 .monument-btn {
-    height: 50px; /* Hauteur des boutons */
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px; /* Ajouter un espace entre les boutons et les images */
-    border-radius: 0; /* Enlever les coins arrondis pour occuper tout l'espace */
+    background-color: #333; 
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.monument-btn:hover {
+    background-color: #555;
 }
 
 .img-fluid {
     width: 100%;
-    height: 400px; /* Hauteur fixe des images */
-    object-fit: cover; /* Adapter les images sans déformation */
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 30px;
 }
 
 .img-fluid:hover {
-    transform: scale(1.05); /* Effet de zoom léger au survol */
+    transform: scale(1.05); 
+    transition: transform 0.3s ease;
 }
 
 #map {
-    height: 300px; /* Ajuster la hauteur de la carte */
+    height: 300px;
     margin-top: 20px;
     border-radius: 10px;
 }
@@ -46,15 +54,57 @@ body {
 }
 
 .description-container {
-    padding: 20px;
-    background-color: #333;
+    background-color: #222;
     color: white;
+    padding: 20px;
     border-radius: 10px;
-    margin-top: 30px;
 }
 
 .btn-lg {
     padding: 10px 15px;
     font-size: 1.2rem;
     font-weight: bold;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0); 
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%); 
+        opacity: 0;
+    }
+}
+
+#map {
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.description-container {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; 
+}
+
+.slide-in {
+    animation: slideIn 0.5s forwards; 
+}
+
+.slide-out {
+    animation: slideOut 0.5s forwards;
 }
